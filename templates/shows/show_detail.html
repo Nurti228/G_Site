@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>More about {{show_id.title}}</h1>
-<img src="{{show_id.image.url}}" alt="">
-<p>{{show_id.description}}</p>
-<p>{{show_id.price}}</p>
+{% include 'shows/header.html' %}
+<h1 class="title-style">More about {{show_id.title}}</h1>
+<img src="{{show_id.image.url}}" alt="" class="image-style">
+<p class="descr-style">{{show_id.description}}</p>
+<p class="price-style">Price: {{show_id.price}}</p>
 <a href="{{show_id.trailer}}">Trailer</a>
-<p>Genre: {{show_id.genre}}</p>
-<p>Authors: {{show_id.authors}}</p>
+<p class="genre-style">Genre: {{show_id.genre}}</p>
+<p class="author-style">Authors: {{show_id.authors}}</p>
 <p>{{show_id.created_at}}</p>
 </body>
 </html>
+{% include 'shows/footer.html' %}

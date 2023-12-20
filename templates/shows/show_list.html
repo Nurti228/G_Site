@@ -1,20 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% include 'shows/header.html' %}
+<div class="container">
     <h1>Show list</h1>
-    <ul>
+    <div class="row">
         {% for i in shows %}
-        <li>
-            <h2>{{i.title}}</h2>
-            <img src="{{i.image.url}}" alt="">
-            <p>{{i.price}}</p>
-            <a href="/show_list/{{i.id}}/">Show more</a>
-        </li>
-        {%endfor%}
-    </ul>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{i.image.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{i.title}}</h5>
+                    <p class="card-text">Price: {{ i.cost }}</p>
+                    <a href="/show_list/{{i.id}}/" class="btn btn-primary">Detail info</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 </body>
 </html>
+{% include 'shows/footer.html' %}
