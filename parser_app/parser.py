@@ -37,7 +37,6 @@ def parser_cars():
         for page in range(0, 1):
             html = get_html(f'https://www.mashina.kg/search/all/', params=page)
             car_list.extend(get_data(html.text))
-        # return car_list
         print(car_list)
     else:
         raise Exception('Error in parse')
