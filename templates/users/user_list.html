@@ -5,20 +5,22 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Успешно зарегистрировались</h1>
+<h1>Вы успешно зарегистрировались!</h1>
 <ol>
-    {% for i in object_list%}
+    {% for i in object_list %}
     <li>
-        <h2>{{i.username}}</h2> - <em>{{i.email}}</em> - <em>{{i.last_name}}</em>
+        <h2>{{i.username}}</h2> - <em>{{i.email}}</em> - <em>{{i.first_name}}</em> - <em>{{i.gender}}</em>
+        <h4>{{i.phone_number}}</h4>
+        <h5>{{i.family}}</h5>
+        <h6>{{i.source}}</h6>
+
     </li>
     {% endfor %}
 </ol>
 
 <form action="{% url 'users:logout' %}">
     {% csrf_token %}
-    {{form.as_p}}
     <button type="submit">Выйти</button>
 </form>
-
 </body>
 </html>

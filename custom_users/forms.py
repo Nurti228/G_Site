@@ -1,13 +1,12 @@
+# forms.py
+
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from . import models
 
-MALE = 1
-FEMALE = 2
-
 GENDER_TYPE = (
-    (MALE, "М"),
-    (FEMALE, "Ж")
+    ("MALE", "М"),
+    ("FEMALE", "Ж")
 )
 
 
@@ -20,10 +19,10 @@ class CustomUserForm(UserCreationForm):
     country = forms.CharField(required=True, label="Откуда вы?")
     family = forms.CharField(required=False, widget=forms.HiddenInput, label="Семейное положение")
     education = forms.CharField(required=False, label='Уровень образования')
-    language = forms.CharField(required=False, label='количество языков которыми владеете')
+    language = forms.CharField(required=False, label='Количество языков, которыми владеете')
 
     class Meta:
-        models = models.CustomUser
+        model = models.CustomUser  # Fix the attribute name
         fields = (
             'username',
             'email',
@@ -42,7 +41,6 @@ class CustomUserForm(UserCreationForm):
     def save(self, commit=True):
         user = super(CustomUserForm, self).save(commit=False)
         user.email = self.cleaned_data['email']
-        user.last_name = self.cleaned_data['last_name']
         if commit:
             user.save()
         return user

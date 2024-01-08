@@ -5,10 +5,11 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse
 from django.views.generic import CreateView, ListView
 from django.urls import reverse_lazy
-from . import forms
+from . import forms, models
 
 
 class RegisterView(CreateView):
+    # form_class = UserCreationForm
     form_class = forms.CustomUserForm
     template_name = 'users/register.html'
     success_url = '/login/'
@@ -27,8 +28,8 @@ class AuthLogoutView(LogoutView):
 
 
 class UsersListView(ListView):
-    model = User
+    model = models.CustomUser
     template_name = 'users/user_list.html'
 
     def get_queryset(self):
-        return User.objects.all()
+        return self.model.objects.all()
